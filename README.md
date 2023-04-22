@@ -42,7 +42,7 @@ const WrappedSingleListItem = ({
   text,
 }) => {
   return (
-    &ltli<br>
+    &ltli
       style={{ backgroundColor: isSelected ? 'green' : 'red'}}
       onClick={onClickHandler(index)}> //callback is not defined 
       {text}
@@ -59,7 +59,7 @@ const WrappedSingleListItem = ({
   text,
 }) => {
   return (
-    &ltli<br>
+    &ltli
       style={{ backgroundColor: isSelected ? 'green' : 'red'}}
       onClick={() => onClickHandler(index)}> //callback is not defined 
       {text}
@@ -186,7 +186,7 @@ const WrappedSingleListItem = ({
   text,
 }) => {
   return (
-    &ltli<br>
+    &ltli
       style={{ backgroundColor: isSelected ? 'green' : 'red'}}
       onClick={() => onClickHandler(index)} //callback is not defined 
       > 
@@ -219,7 +219,7 @@ const WrappedListComponent = ({
   };
 
   return (<br>
-    &lt ul<br> style={{ textAlign: 'left' }}>
+    &lt ul style={{ textAlign: 'left' }}>
       {items.map((item, index) => (
         &ltSingleListItem
           key={index} //Modified
