@@ -200,7 +200,7 @@ const WrappedListComponent = ({
   };
 
   return (<br>
-    <ul<br> style={{ textAlign: 'left' }}>
+    &lt ul<br> style={{ textAlign: 'left' }}>
       {items.map((item, index) => (
         <SingleListItem
           key={index} //Modified
@@ -209,8 +209,8 @@ const WrappedListComponent = ({
           index={index}
           isSelected={selectedIndex === index} //Modified
         />
-      ))}
-    </ul>
+      ))}<br>
+    &lt/ul>
   )
 };
 
