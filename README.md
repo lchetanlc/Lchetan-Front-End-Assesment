@@ -148,78 +148,81 @@ Modified Code:
 # 3) Please fix, optimize, and/or modify the component as much as you think is necessary.
             
 Ans: The Working Modified Code:<br><br>
-import React, { useState, useEffect, memo } from 'react';<br>
-import PropTypes from 'prop-types';<br>
+<pre>
+import React, { useState, useEffect, memo } from 'react';
+import PropTypes from 'prop-types';
 
-// Single List Item<br>
-const WrappedSingleListItem = ({<br>
-  index,<br>
-  isSelected,<br>
-  onClickHandler,<br>
-  text,<br>
-}) => {<br>
-  return (<br>
-    <li<br>
-      style={{ backgroundColor: isSelected ? 'green' : 'red' }}<br>
-      onClick={() => onClickHandler(index)} >//Modified<br>
-      {text}<br>
-    </li><br>
-  );<br>
-};<br>
+// Single List Item
+const WrappedSingleListItem = ({
+  index,
+  isSelected,
+  onClickHandler,
+  text,
+}) => {
+  return (
+    <li
+      style={{ backgroundColor: isSelected ? 'green' : 'red' }}
+      onClick={() => onClickHandler(index)} //Modified
+    >
+      {text}
+    </li>
+  );
+};
 
-WrappedSingleListItem.propTypes = {<br>
-  index: PropTypes.number,<br>
-  isSelected: PropTypes.bool,<br>
-  onClickHandler: PropTypes.func.isRequired,<br>
-  text: PropTypes.string.isRequired,<br>
-};<br>
+WrappedSingleListItem.propTypes = {
+  index: PropTypes.number,
+  isSelected: PropTypes.bool,
+  onClickHandler: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
-const SingleListItem = memo(WrappedSingleListItem);<br>
+const SingleListItem = memo(WrappedSingleListItem);
 
-// List Component<br>
-const WrappedListComponent = ({<br>
-  items,<br>
-}) => {<br>
-  const [selectedIndex, setSelectedIndex] = useState(); //Modified<br>
+// List Component
+const WrappedListComponent = ({
+  items,
+}) => {
+  const [selectedIndex, setSelectedIndex] = useState(); //Modified
 
-  useEffect(() => {<br>
-    setSelectedIndex(null);<br>
-  }, [items]);<br>
+  useEffect(() => {
+    setSelectedIndex(null);
+  }, [items]);
 
-  const handleClick = index => {<br>
-    setSelectedIndex(index);<br>
-  };<br>
+  const handleClick = index => {
+    setSelectedIndex(index);
+  };
 
-  return (<br>
-    <ul style={{ textAlign: 'left' }}><br>
-      {items.map((item, index) => (<br>
-        <SingleListItem<br>
-          key={index} //Modified<br>
-          onClickHandler={() => handleClick(index)}<br>
-          text={item.text}<br>
-          index={index}<br>
-          isSelected={selectedIndex === index} //Modified<br>
-        /><br>
-      ))}<br>
-    </ul><br>
-  )<br>
-};<br>
+  return (
+    <ul style={{ textAlign: 'left' }}>
+      {items.map((item, index) => (
+        <SingleListItem
+          key={index} //Modified
+          onClickHandler={() => handleClick(index)}
+          text={item.text}
+          index={index}
+          isSelected={selectedIndex === index} //Modified
+        />
+      ))}
+    </ul>
+  )
+};
 
-WrappedListComponent.propTypes = {<br>
-  items: PropTypes.arrayOf(PropTypes.shape({ //Modified<br>
-    text: PropTypes.string.isRequired,<br>
-  })),<br>
-};<br>
+WrappedListComponent.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({ //Modified
+    text: PropTypes.string.isRequired,
+  })),
+};
 
-WrappedListComponent.defaultProps = { //Modified<br>
-  items: [<br>
-    { text: "L Chetan" },<br>
-    { text: "12012893" },<br>
-    { text: "LPU" },<br>
-    { text: "B-Tech" },<br>
-    { text: "Cse" },<br>
+WrappedListComponent.defaultProps = { //Modified
+  items: [
+    { text: "L Chetan" },
+    { text: "12012893" },
+    { text: "LPU" },
+    { text: "B-Tech" },
+    { text: "Cse" },
 
-  ],<br>
-};<br>
-const List = memo(WrappedListComponent);<br>
-export default List;<br>
+  ],
+};
+const List = memo(WrappedListComponent);
+export default List;
+</pre>
