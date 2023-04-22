@@ -4,114 +4,115 @@ Ans: There are multiple problems/warnings with the code that are to be rectified
 #### 1. Uncaught TypeError: PropTypes.shapeOf is not a function, the propTypes declaration for the items prop in the WrappedListComponent component is wrong.<br>
 <br>Code Given :
 <pre>
-WrappedListComponent.propTypes = {<br>
-  items: PropTypes.array(PropTypes.shapeOf({ //ShapeOf is not a Valid Function<br>
-    text: PropTypes.string.isRequired,<br>
-  })),<br>
+WrappedListComponent.propTypes = {
+  items: PropTypes.array(PropTypes.shapeOf({ //ShapeOf is not a Valid Function
+    text: PropTypes.string.isRequired,
+  })),
  };
 </pre>
- Edited Code :<br>
+ Edited Code :
 <pre>
-WrappedListComponent.propTypes = {<br>
-  items: PropTypes.arrayOf(PropTypes.shape({ //Correct Function is ArrayOf<br>
-    text: PropTypes.string.isRequired,<br>
-  })),<br>
- };<br>
+WrappedListComponent.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({ //Correct Function is ArrayOf
+    text: PropTypes.string.isRequired,
+  })),
+ };
 </pre>
 
 #### 2. The onClickHandler property in WrappedSingleList Item is called incorrectly; it should be called as a callback to be triggered when the list item is clicked.
 
 Code Given :
 <pre>
-const WrappedSingleListItem = ({<br>
-  index,<br>
-  isSelected,<br>
-  onClickHandler,<br>
-  text,<br>
-}) => {<br>
-  return (<br>
+const WrappedSingleListItem = ({
+  index,
+  isSelected,
+  onClickHandler,
+  text,
+}) => {
+  return (
     <li<br>
-      style={{ backgroundColor: isSelected ? 'green' : 'red'}}<br>
+      style={{ backgroundColor: isSelected ? 'green' : 'red'}}
       onClick={onClickHandler(index)}> //callback is not defined 
-      {text}<br>
-    </li><br>
-  );<br>
-};<br>
+      {text}
+    </li>
+  );
+};
 </pre>
 Edited Code :
 <pre>
-const WrappedSingleListItem = ({<br>
-  index,<br>
-  isSelected,<br>
-  onClickHandler,<br>
-  text,<br>
-}) => {<br>
-  return (<br>
-    <li<br>
-      style={{ backgroundColor: isSelected ? 'green' : 'red'}}<br>
-      onClick={()=>onClickHandler(index)} //with call back function ><br>
-      {text}<br>
-    </li><br>
-  );<br>
+const WrappedSingleListItem = ({
+  index,
+  isSelected,
+  onClickHandler,
+  text,
+}) => {
+  return (
+    <li
+      style={{ backgroundColor: isSelected ? 'green' : 'red'}}
+      onClick={()=>onClickHandler(index)} //with call back function 
+      >
+      {text}
+    </li>
+  );
 </pre>
 
 #### 3. The default value of null for the items prop in WrappedListComponent can lead to issues when attempting to perform mapping operations on it.
 
 provided code:
 <pre>
-WrappedListComponent.defaultProps = {<br>
-  items: null,<br>
-};<br>
+WrappedListComponent.defaultProps = {
+  items: null,
+};
 </pre>
 
 Modified Code:
 <pre>
-WrappedListComponent.defaultProps = {<br>
-  items:  [<br>
-    {text : "L Chetan"},<br>
-    {text : "12012893"},<br>
-    {text : "LPU"},<br>
-    {text : "B-Tech"},<br>
-    {text : "Cse"},   <br>
+WrappedListComponent.defaultProps = {
+  items:  [
+    {text : "L Chetan"},
+    {text : "12012893"},
+    {text : "LPU"},
+    {text : "B-Tech"},
+    {text : "Cse"},   
   ],
-};<br>
+};
 </pre>
 
 #### 4. To ensure that only the clicked option changes color and not all the content present in a list, we can modify the isSelected property to isSelected = (SelectedIndex === Index). This will allow us to update the selected option's color based on its index in the list.
 
 Code Given :
 <pre>
-return (<br>
-    <ul style={{ textAlign: 'left' }}><br>
-      {items.map((item, index) => (<br>
-        <SingleListItem<br>
-          onClickHandler={() => handleClick(index)}<br>
-          text={item.text}<br>
-          index={index}<br>
-          isSelected={selectedIndex}// using this syntax, all available colours are selected and changed.<br>
-        /><br>
-      ))}<br>
+return (
+    <ul style={{ textAlign: 'left' }}>
+      {items.map((item, index) => (
+        <SingleListItem
+          onClickHandler={() => handleClick(index)}
+          text={item.text}
+          index={index}
+          isSelected={selectedIndex}// using this syntax, all available colours are selected and changed.
+        />
+      ))}
     </ul>
-  )<br>
-};<br>
+  )
+};
 </pre>
 Edited Code :
 <pre>
- return (<br>
-    <ul style={{ textAlign: 'left' }}><br>
-      {items.map((item, index) => (<br>
-        <SingleListItem<br>
-          onClickHandler={() => handleClick(index)}<br>
-          text={item.text}<br>
-          index={index}<br>
-          isSelected={selectedIndex=== index}// Whenever a user selects an option, only that option's colour changes.        /><br>
-      ))}<br>
+ return (
+    <ul style={{ textAlign: 'left' }};
+      {items.map((item, index) => (
+        <SingleListItem
+          onClickHandler={() => handleClick(index)}
+          text={item.text}
+          index={index}
+          isSelected={selectedIndex=== index}// Whenever a user selects an option, only that option's colour changes.        />
+      ))}
     </ul>
-  )<br>
-};<br>
+  )
+};
 </pre>
 
-The modification to the isSelected property ensures that only the option selected by the user changes its color, while the rest of the content in the list remains unaffected.<br>
+The modification to the isSelected property ensures that only the option selected by the user changes its color, while the rest of the content in the list remains unaffected.
             
 #### 5). Uncaught TypeError: setSelectedIndex is not a function in the code given. The useState function used in the WrappedListComponent component initialises the selectedIndex state, but the initial value (null) should appear first in the returned array, not the setter function.
 
@@ -129,37 +130,37 @@ const [ selectedIndex, setSelectedIndex] = useState(); //corrected code
 
 Code Given :
 <pre>
-return (<br>
-    <ul style={{ textAlign: 'left' }}><br>
-      {items.map((item, index) => (<br>
-        <SingleListItem //key is not present<br>
-          onClickHandler={() => handleClick(index)}<br>
-          text={item.text}<br>
-          index={index}<br>
-          isSelected={selectedIndex=== index}<br>
-        /><br>
-      ))}<br>
+return (
+    <ul style={{ textAlign: 'left' }}>
+      {items.map((item, index) => (
+        <SingleListItem //key is not present
+          onClickHandler={() => handleClick(index)}
+          text={item.text}
+          index={index}
+          isSelected={selectedIndex=== index}
+        />
+      ))}
     </ul>
-  )<br>
+  )
 };
-<br>
+
 </pre>
 Modified Code:
 <pre>
- return (<br>
-    <ul style={{ textAlign: 'left' }}><br>
-      {items.map((item, index) => (<br>
-        <SingleListItem<br>
-        key={index}// added key<br> 
-          onClickHandler={() => handleClick(index)}<br>
-          text={item.text}<br>
-          index={index}<br>
-          isSelected={selectedIndex=== index}<br>
-        /><br>
-      ))}<br>
+ return (
+    <ul style={{ textAlign: 'left' }}>
+      {items.map((item, index) => (
+        <SingleListItem
+        key={index}// added key
+          onClickHandler={() => handleClick(index)}
+          text={item.text}
+          index={index}
+          isSelected={selectedIndex=== index}
+        />
+      ))}
     </ul>
-  )<br>
-};<br>
+  )
+};
 </pre>
 # 3) Please fix, optimize, and/or modify the component as much as you think is necessary.
             
