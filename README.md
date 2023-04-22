@@ -42,11 +42,11 @@ const WrappedSingleListItem = ({
   text,
 }) => {
   return (
-    <li<br>
+    &ltli<br>
       style={{ backgroundColor: isSelected ? 'green' : 'red'}}
       onClick={onClickHandler(index)}> //callback is not defined 
       {text}
-    </li>
+    &lt/li>
   );
 };
 </pre>
@@ -59,11 +59,11 @@ const WrappedSingleListItem = ({
   text,
 }) => {
   return (
-    <li<br>
+    &ltli<br>
       style={{ backgroundColor: isSelected ? 'green' : 'red'}}
       onClick={() => onClickHandler(index)}> //callback is not defined 
       {text}
-    </li>
+    &lt/li>
   );
 };
 </pre>
@@ -95,29 +95,29 @@ WrappedListComponent.defaultProps = {
 Given:
 <pre>
 return (
-    <ul style={{ textAlign: 'left' }}>
+    &ltul style={{ textAlign: 'left' }}>
       {items.map((item, index) => (
-        <SingleListItem
+        &ltSingleListItem
           onClickHandler={() => handleClick(index)}
           text={item.text}
           index={index}
           isSelected={selectedIndex}// using this syntax, all available colours are selected and changed.
         />
-      ))} </ul>
+      ))} &lt/ul>
   )};
 </pre>
 Modified:
 <pre>
  return (
-    <ul style={{ textAlign: 'left' }};
+    &ltul style={{ textAlign: 'left' }};
       {items.map((item, index) => (
-        <SingleListItem
+        &ltSingleListItem
           onClickHandler={() => handleClick(index)}
           text={item.text}
           index={index}
           isSelected={selectedIndex=== index}// Whenever a user selects an option, only that option's colour changes.        
           />
-      ))} </ul>
+      ))} &lt/ul>
   )};
 </pre>
 
@@ -140,16 +140,16 @@ const [ selectedIndex, setSelectedIndex] = useState(); //corrected code
 Given:
 <pre>
 return (
-    <ul style={{ textAlign: 'left' }}>
+    &ltul style={{ textAlign: 'left' }}>
       {items.map((item, index) => (
-        <SingleListItem
+        &ltSingleListItem
           onClickHandler={() => handleClick(index)}
           text={item.text}
           index={index}
           isSelected={selectedIndex=== index}
         />
       ))}
-    </ul>
+    &lt/ul>
   )
 };
 </pre>
