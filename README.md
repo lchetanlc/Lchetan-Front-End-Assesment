@@ -3,12 +3,13 @@ Ans: There are multiple problems/warnings with the code that are to be rectified
 
 #### 1. Uncaught TypeError: PropTypes.shapeOf is not a function, the propTypes declaration for the items prop in the WrappedListComponent component is wrong.<br>
 <br>Code Given :
+<pre>
 > WrappedListComponent.propTypes = {<br>
   items: PropTypes.array(PropTypes.shapeOf({ //ShapeOf is not a Valid Function<br>
     text: PropTypes.string.isRequired,<br>
   })),<br>
  };
-
+</pre>
  Edited Code :<br>
 > WrappedListComponent.propTypes = {<br>
   items: PropTypes.arrayOf(PropTypes.shape({ //Correct Function is ArrayOf<br>
