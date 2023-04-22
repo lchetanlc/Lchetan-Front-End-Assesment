@@ -1,9 +1,6 @@
 # 1) Explain what the simple List component does.
-<pre>
-The 'WrappedListComponent' is a component that takes in an array of objects called 'items' as props,
-where each object in the array must have a parameter named "text" of type string.Using the 'map' function, 
-the component iterates through the 'items' array and renders a 'SingleListItem' component for each object.
-The 'SingleListItem' component receives props such as onClickHandler, text, index, and isSelected from the 'WrappedListComponent'.
+
+The 'WrappedListComponent' is a component that takes in an array of objects called 'items' as props, where each object in the array must have a parameter named "text" of type string. Using the 'map' function, the component iterates through the 'items' array and renders a 'SingleListItem' component for each object. The 'SingleListItem' component receives props such as onClickHandler, text, index, and isSelected from the 'WrappedListComponent'.
 
 The 'index' prop is unique for each 'SingleListItem' component and helps to identify the clicked list item. Initially, the 'selectedIndex' value is null, but changes to the respective index value of the clicked list item when the user interacts with it.
 
@@ -12,7 +9,6 @@ The 'isSelected' prop is used to highlight the selected list item by changing it
 To avoid unnecessary re-rendering, the 'WrappedSingleListItem' component is memoized and only re-renders when the value of the 'isSelected' prop changes. This ensures that the component will not re-render unnecessarily even if the user double-clicks on a list item.
 
 In summary, the 'WrappedListComponent' creates a list of items using the 'WrappedSingleListItem' component, which is also a memoized functional component.
-<.pre>
 
 # 2) What problems / warnings are there with code?
 Ans: There are multiple problems/warnings with the code that are to be rectified to render the component correctly.
