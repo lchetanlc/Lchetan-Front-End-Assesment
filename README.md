@@ -4,24 +4,26 @@ Ans: There are multiple problems/warnings with the code that are to be rectified
 #### 1. Uncaught TypeError: PropTypes.shapeOf is not a function, the propTypes declaration for the items prop in the WrappedListComponent component is wrong.<br>
 <br>Code Given :
 <pre>
-> WrappedListComponent.propTypes = {<br>
+WrappedListComponent.propTypes = {<br>
   items: PropTypes.array(PropTypes.shapeOf({ //ShapeOf is not a Valid Function<br>
     text: PropTypes.string.isRequired,<br>
   })),<br>
  };
 </pre>
  Edited Code :<br>
-> WrappedListComponent.propTypes = {<br>
+<pre>
+WrappedListComponent.propTypes = {<br>
   items: PropTypes.arrayOf(PropTypes.shape({ //Correct Function is ArrayOf<br>
     text: PropTypes.string.isRequired,<br>
   })),<br>
  };<br>
-
+</pre>
 
 #### 2. The onClickHandler property in WrappedSingleList Item is called incorrectly; it should be called as a callback to be triggered when the list item is clicked.
 
 Code Given :
-> const WrappedSingleListItem = ({<br>
+<pre>
+const WrappedSingleListItem = ({<br>
   index,<br>
   isSelected,<br>
   onClickHandler,<br>
@@ -35,9 +37,10 @@ Code Given :
     </li><br>
   );<br>
 };<br>
-
+</pre>
 Edited Code :
-> const WrappedSingleListItem = ({<br>
+<pre>
+const WrappedSingleListItem = ({<br>
   index,<br>
   isSelected,<br>
   onClickHandler,<br>
@@ -50,17 +53,20 @@ Edited Code :
       {text}<br>
     </li><br>
   );<br>
-<br>
+</pre>
 
 #### 3. The default value of null for the items prop in WrappedListComponent can lead to issues when attempting to perform mapping operations on it.
 
 provided code:
-> WrappedListComponent.defaultProps = {<br>
+<pre>
+WrappedListComponent.defaultProps = {<br>
   items: null,<br>
 };<br>
+</pre>
 
 Modified Code:
-> WrappedListComponent.defaultProps = {<br>
+<pre>
+WrappedListComponent.defaultProps = {<br>
   items:  [<br>
     {text : "L Chetan"},<br>
     {text : "12012893"},<br>
@@ -69,11 +75,13 @@ Modified Code:
     {text : "Cse"},   <br>
   ],
 };<br>
+</pre>
 
 #### 4. To ensure that only the clicked option changes color and not all the content present in a list, we can modify the isSelected property to isSelected = (SelectedIndex === Index). This will allow us to update the selected option's color based on its index in the list.
 
 Code Given :
-> return (<br>
+<pre>
+return (<br>
     <ul style={{ textAlign: 'left' }}><br>
       {items.map((item, index) => (<br>
         <SingleListItem<br>
@@ -86,9 +94,10 @@ Code Given :
     </ul>
   )<br>
 };<br>
-
+</pre>
 Edited Code :
-> return (<br>
+<pre>
+ return (<br>
     <ul style={{ textAlign: 'left' }}><br>
       {items.map((item, index) => (<br>
         <SingleListItem<br>
@@ -100,22 +109,27 @@ Edited Code :
     </ul>
   )<br>
 };<br>
+</pre>
 
 The modification to the isSelected property ensures that only the option selected by the user changes its color, while the rest of the content in the list remains unaffected.<br>
             
 #### 5). Uncaught TypeError: setSelectedIndex is not a function in the code given. The useState function used in the WrappedListComponent component initialises the selectedIndex state, but the initial value (null) should appear first in the returned array, not the setter function.
 
 Given:
-> const [setSelectedIndex, selectedIndex] = useState(); //incorrect sequence
-
+<pre>
+ const [setSelectedIndex, selectedIndex] = useState(); //incorrect sequence
+</pre>
 Edited Code:
-> const [ selectedIndex, setSelectedIndex] = useState(); //corrected code
+<pre>
+const [ selectedIndex, setSelectedIndex] = useState(); //corrected code
+</pre>
 
 
 #### 6. In the map function, the value of the unique key is not defined as a prop for each child value.
 
 Code Given :
-> return (<br>
+<pre>
+return (<br>
     <ul style={{ textAlign: 'left' }}><br>
       {items.map((item, index) => (<br>
         <SingleListItem //key is not present<br>
@@ -129,9 +143,10 @@ Code Given :
   )<br>
 };
 <br>
+</pre>
 Modified Code:
-
-> return (<br>
+<pre>
+ return (<br>
     <ul style={{ textAlign: 'left' }}><br>
       {items.map((item, index) => (<br>
         <SingleListItem<br>
@@ -145,7 +160,7 @@ Modified Code:
     </ul>
   )<br>
 };<br>
-
+</pre>
 # 3) Please fix, optimize, and/or modify the component as much as you think is necessary.
             
 Ans: The Working Modified Code:<br><br>
