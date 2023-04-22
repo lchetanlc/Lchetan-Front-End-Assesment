@@ -91,10 +91,8 @@ return (
           index={index}
           isSelected={selectedIndex}// using this syntax, all available colours are selected and changed.
         />
-      ))}
-    </ul>
-  )
-};
+      ))} </ul>
+  )};
 </pre>
 Edited Code :
 <pre>
@@ -105,11 +103,10 @@ Edited Code :
           onClickHandler={() => handleClick(index)}
           text={item.text}
           index={index}
-          isSelected={selectedIndex=== index}// Whenever a user selects an option, only that option's colour changes.        />
-      ))}
-    </ul>
-  )
-};
+          isSelected={selectedIndex=== index}// Whenever a user selects an option, only that option's colour changes.        
+          />
+      ))} </ul>
+  )};
 </pre>
 
 The modification to the isSelected property ensures that only the option selected by the user changes its color, while the rest of the content in the list remains unaffected.
@@ -137,12 +134,9 @@ return (
           onClickHandler={() => handleClick(index)}
           text={item.text}
           index={index}
-          isSelected={selectedIndex=== index}
-        />
-      ))}
-    </ul>
-  )
-};
+          isSelected={selectedIndex=== index} />
+      ))}</ul>
+  )};
 
 </pre>
 Modified Code:
@@ -155,12 +149,9 @@ Modified Code:
           onClickHandler={() => handleClick(index)}
           text={item.text}
           index={index}
-          isSelected={selectedIndex=== index}
-        />
-      ))}
-    </ul>
-  )
-};
+          isSelected={selectedIndex=== index} />
+      ))} </ul>
+  )};
 </pre>
 # 3) Please fix, optimize, and/or modify the component as much as you think is necessary.
             
