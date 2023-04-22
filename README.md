@@ -14,7 +14,7 @@
 Ans: There are multiple problems/warnings with the code that are to be rectified to render the component correctly.
 
 #### 1. Uncaught TypeError: PropTypes.shapeOf is not a function, the propTypes declaration for the items prop in the WrappedListComponent component is wrong.<br>
-<br>Code Given :
+<br>Given :
 <pre>
 WrappedListComponent.propTypes = {
   items: PropTypes.array(PropTypes.shapeOf({ //ShapeOf is not a Valid Function
@@ -22,7 +22,7 @@ WrappedListComponent.propTypes = {
   })),
  };
 </pre>
- Edited Code :
+Modified:
 <pre>
 WrappedListComponent.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({ //Correct Function is ArrayOf
@@ -33,7 +33,7 @@ WrappedListComponent.propTypes = {
 
 #### 2. The onClickHandler property in WrappedSingleList Item is called incorrectly; it should be called as a callback to be triggered when the list item is clicked.
 
-Code Given :
+Given:
 <pre>
 const WrappedSingleListItem = ({
   index,
@@ -50,7 +50,7 @@ const WrappedSingleListItem = ({
   );
 };
 </pre>
-Edited Code :
+Modified:
 <pre>
 const WrappedSingleListItem = ({
   index,
@@ -70,14 +70,14 @@ const WrappedSingleListItem = ({
 
 #### 3. The default value of null for the items prop in WrappedListComponent can lead to issues when attempting to perform mapping operations on it.
 
-provided code:
+Given:
 <pre>
 WrappedListComponent.defaultProps = {
   items: null,
 };
 </pre>
 
-Modified Code:
+Modified:
 <pre>
 WrappedListComponent.defaultProps = {
   items:  [
@@ -92,7 +92,7 @@ WrappedListComponent.defaultProps = {
 
 #### 4. To ensure that only the clicked option changes color and not all the content present in a list, we can modify the isSelected property to isSelected = (SelectedIndex === Index). This will allow us to update the selected option's color based on its index in the list.
 
-Code Given :
+Given:
 <pre>
 return (
     <ul style={{ textAlign: 'left' }}>
@@ -106,7 +106,7 @@ return (
       ))} </ul>
   )};
 </pre>
-Edited Code :
+Modified:
 <pre>
  return (
     <ul style={{ textAlign: 'left' }};
@@ -129,7 +129,7 @@ Given:
 <pre>
  const [setSelectedIndex, selectedIndex] = useState(); //incorrect sequence
 </pre>
-Edited Code:
+Modified:
 <pre>
 const [ selectedIndex, setSelectedIndex] = useState(); //corrected code
 </pre>
@@ -137,21 +137,23 @@ const [ selectedIndex, setSelectedIndex] = useState(); //corrected code
 
 #### 6. In the map function, the value of the unique key is not defined as a prop for each child value.
 
-Code Given :
+Given:
 <pre>
 return (
     <ul style={{ textAlign: 'left' }}>
       {items.map((item, index) => (
-        <SingleListItem //key is not present
+        <SingleListItem
           onClickHandler={() => handleClick(index)}
           text={item.text}
           index={index}
-          isSelected={selectedIndex=== index} />
-      ))}</ul>
-  )};
-
+          isSelected={selectedIndex=== index}
+        />
+      ))}
+    </ul>
+  )
+};
 </pre>
-Modified Code:
+Modified:
 <pre>
  return (
     &ltul style={{ textAlign: 'left' }}>
