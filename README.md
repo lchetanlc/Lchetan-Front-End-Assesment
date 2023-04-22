@@ -1,3 +1,5 @@
+Deployed Link : #### https://chetan-steeleye-assesment.netlify.app/
+
 # 1) Explain what the simple List component does.
 
 > The 'WrappedListComponent' takes in an array of objects called 'items' as props, where each object in the array must have a parameter named "text" of type string. Using the 'map' function, the component iterates through the 'items' array and renders a 'SingleListItem' component for each object. The 'SingleListItem' component receives props such as onClickHandler, text, index, and isSelected from the 'WrappedListComponent'.
