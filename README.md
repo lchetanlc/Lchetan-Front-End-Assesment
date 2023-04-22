@@ -199,8 +199,8 @@ const WrappedListComponent = ({
     setSelectedIndex(index);
   };
 
-  return (
-    <ul style={{ textAlign: 'left' }}>
+  return (<br>
+    <ul<br> style={{ textAlign: 'left' }}>
       {items.map((item, index) => (
         <SingleListItem
           key={index} //Modified
