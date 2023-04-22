@@ -202,7 +202,7 @@ const WrappedListComponent = ({
   return (<br>
     &lt ul<br> style={{ textAlign: 'left' }}>
       {items.map((item, index) => (
-        <SingleListItem
+        &ltSingleListItem
           key={index} //Modified
           onClickHandler={() => handleClick(index)}
           text={item.text}
