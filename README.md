@@ -47,12 +47,13 @@ const WrappedSingleListItem = ({
   text,
 }) => {
   return (
-    <li
-    style={{ backgroundColor: isSelected ? 'green' : 'red'}}
-
+    <li<br>
+      style={{ backgroundColor: isSelected ? 'green' : 'red'}}
+      onClick={onClickHandler(index)}> //callback is not defined 
       {text}
     </li>
   );
+};
 </pre>
 
 #### 3. The default value of null for the items prop in WrappedListComponent can lead to issues when attempting to perform mapping operations on it.
