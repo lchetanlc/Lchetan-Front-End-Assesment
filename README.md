@@ -1,6 +1,6 @@
 # 2) What problems / warnings are there with code?
 Ans: There are multiple problems/warnings with the code that are to be rectified to render the component correctly.
-
+ome text here &#x3D;&#x3E; Some other text here
 #### 1. Uncaught TypeError: PropTypes.shapeOf is not a function, the propTypes declaration for the items prop in the WrappedListComponent component is wrong.<br>
 <br>Code Given :
 <pre>
