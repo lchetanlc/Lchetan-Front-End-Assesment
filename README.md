@@ -161,7 +161,9 @@ const WrappedSingleListItem = ({
 }) => {
   return (
     <li
-      style={{ backgroundColor: isSelected ? 'green' : 'red' }} onClick={() = >onClickHandler(index)}> //Modified
+      style={{ backgroundColor: isSelected ? 'green' : 'red' }}
+      onClick={() => onClickHandler(index)} //Modified
+    >
       {text}
     </li>
   );
@@ -223,4 +225,5 @@ WrappedListComponent.defaultProps = { //Modified
 };
 const List = memo(WrappedListComponent);
 export default List;
+
 </pre>
