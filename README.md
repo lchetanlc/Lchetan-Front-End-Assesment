@@ -1,4 +1,4 @@
-Deployed Link : #### https://chetan-steeleye-assesment.netlify.app/
+Deployed Link : https://chetan-steeleye-assesment.netlify.app/
 
 # 1) Explain what the simple List component does.
 
