@@ -168,9 +168,10 @@ const WrappedSingleListItem = ({
   text,
 }) => {
   return (
-    <li<br>
-      style={{ backgroundColor: isSelected ? 'green' : 'red'}}
-      onClick={() => onClickHandler(index)}> //callback is not defined 
+    <li
+      style={{ backgroundColor: isSelected ? 'green' : 'red' }}
+      onClick={() => onClickHandler(index)} //Modified
+    >
       {text}
     </li>
   );
