@@ -154,16 +154,20 @@ return (
 Modified Code:
 <pre>
  return (
-    <ul style={{ textAlign: 'left' }}>
+    &ltul style={{ textAlign: 'left' }}>
       {items.map((item, index) => (
-        <SingleListItem
-        key={index}// added key
+        &ltSingleListItem
+        key={index} // added key 
           onClickHandler={() => handleClick(index)}
           text={item.text}
           index={index}
-          isSelected={selectedIndex=== index} />
-      ))} </ul>
-  )};
+          isSelected={selectedIndex=== index}
+        />
+      ))}
+    &lt/ul>
+  )
+};
+
 </pre>
 # 3) Please fix, optimize, and/or modify the component as much as you think is necessary.
             
